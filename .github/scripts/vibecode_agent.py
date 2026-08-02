@@ -69,7 +69,7 @@ def generate_fix(issue_title: str, issue_body: str, context: str, api_key: str) 
     resp.raise_for_status()
     content = resp.json()["choices"][0]["message"]["content"].strip()
     content = content.removeprefix("```json").removeprefix("```").removesuffix("```").strip()
-    return json.loads(content)
+    return json.loads(content, strict=False)
 
 
 def write_output(name: str, value: str) -> None:
@@ -84,9 +84,14 @@ def main() -> int:
     api_key = os.environ["OPENROUTER_API_KEY"]
     context = load_context_files(os.environ["CONTEXT_FILE"])
 
+    print(f"Context: {len(context)} chars from cognitive-cache selection")
+
     result = generate_fix(issue_title, issue_body, context, api_key)
     files = result.get("files", [])
     summary = result.get("summary", f"fix for issue #{issue_number}").replace("\n", " ")
+
+    print(f"Model returned {len(files)} file(s): {[f.get('path') for f in files]}")
+    print(f"Summary: {summary}")
 
     written = []
     for entry in files[:MAX_FILES_TO_WRITE]:
