@@ -1,0 +1,84 @@
+name: Vibecode agent - attempt to solve issue
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  solve:
+    if: contains(github.event.issue.labels.*.name, 'vibecode')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: astral-sh/setup-uv@v7
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install cognitive-cache
+        run: uv tool install cognitive-cache
+
+      - name: Select relevant files
+        id: select
+        env:
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          cognitive-cache select \
+            --repo . \
+            --task "${ISSUE_TITLE}. ${ISSUE_BODY}" \
+            --budget 20000 \
+            --json > /tmp/cc-result.json
+
+      - name: Install agent deps
+        run: pip install requests
+
+      - name: Run vibecode agent
+        id: agent
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          CONTEXT_FILE: /tmp/cc-result.json
+        run: python .github/scripts/vibecode_agent.py
+
+      - name: Open PR
+        if: steps.agent.outputs.branch != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ steps.agent.outputs.branch }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          SUMMARY: ${{ steps.agent.outputs.summary }}
+        run: |
+          git push origin "$BRANCH"
+          gh pr create \
+            --title "vibecode: ${SUMMARY}" \
+            --body "Closes #${ISSUE_NUMBER}
+
+${SUMMARY}
+
+---
+Generated automatically by the vibecode agent from issue #${ISSUE_NUMBER}. Review carefully before merging — this PR has not been tested by a human." \
+            --head "$BRANCH" \
+            --label "ai-generated"
+
+      - name: Comment on issue if agent failed
+        if: steps.agent.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: "The vibecode agent couldn't generate a fix for this automatically — needs a human.",
+            });
