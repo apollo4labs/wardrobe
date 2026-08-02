@@ -60,19 +60,22 @@ jobs:
           SUMMARY: ${{ steps.agent.outputs.summary }}
         run: |
           git push origin "$BRANCH"
+          cat > /tmp/pr-body.md <<EOF
+          Closes #${ISSUE_NUMBER}
+
+          ${SUMMARY}
+
+          ---
+          Generated automatically by the vibecode agent from issue #${ISSUE_NUMBER}. Review carefully before merging - this PR has not been tested by a human.
+          EOF
           gh pr create \
             --title "vibecode: ${SUMMARY}" \
-            --body "Closes #${ISSUE_NUMBER}
-
-${SUMMARY}
-
----
-Generated automatically by the vibecode agent from issue #${ISSUE_NUMBER}. Review carefully before merging — this PR has not been tested by a human." \
+            --body-file /tmp/pr-body.md \
             --head "$BRANCH" \
             --label "ai-generated"
 
       - name: Comment on issue if agent failed
-        if: steps.agent.outcome == 'failure'
+        if: failure() && steps.agent.outcome == 'failure'
         uses: actions/github-script@v7
         with:
           script: |
