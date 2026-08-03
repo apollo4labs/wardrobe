@@ -5,6 +5,130 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.0](https://github.com/apollo4labs/wardrobe/compare/wardrowbe-v1.7.0...wardrowbe-v1.8.0) (2026-08-03)
+
+
+### ✨ Features
+
+* add custom User-Agent header to JWKS client ([#134](https://github.com/apollo4labs/wardrobe/issues/134)) ([c18fa75](https://github.com/apollo4labs/wardrobe/commit/c18fa75a8fa70342466b7c84bf8cefbd0e4a51a7))
+* add mobile callback [#58](https://github.com/apollo4labs/wardrobe/issues/58) ([44cf285](https://github.com/apollo4labs/wardrobe/commit/44cf285d3d612d1e1e97d1af110c284b716cb398))
+* add next-intl internationalization with 4 locales ([be2668f](https://github.com/apollo4labs/wardrobe/commit/be2668f9b326ddfaaa45ecb2aad9195fd74b4bc5))
+* add next-intl internationalization with 4 locales (en/zh/fr/it) ([77d5f6b](https://github.com/apollo4labs/wardrobe/commit/77d5f6b0e9f4525b02004361a36b019950283ea8))
+* add page-size control and scope select-all to current page ([#127](https://github.com/apollo4labs/wardrobe/issues/127)) ([7430a4f](https://github.com/apollo4labs/wardrobe/commit/7430a4f910a65d6db810a5381f362e91f902694f))
+* allow bulk upload without forced AI analysis ([#128](https://github.com/apollo4labs/wardrobe/issues/128)) ([7984e26](https://github.com/apollo4labs/wardrobe/commit/7984e26f4fa233a1a40d95805e74e6444ffa2bc6))
+* allow cancelling AI analysis on processing items ([#95](https://github.com/apollo4labs/wardrobe/issues/95)) ([05f3578](https://github.com/apollo4labs/wardrobe/commit/05f357808d55a74de1394b5ec36cf5472370ba21))
+* **api:** advertise external_tagging in /capabilities ([9f0d5ea](https://github.com/apollo4labs/wardrobe/commit/9f0d5ea21f04872482265a5c201e0176a89d8f23))
+* **backend:** persist user locale ([a1878d3](https://github.com/apollo4labs/wardrobe/commit/a1878d3bb07258ca1285dc1334d5c082d49e120b))
+* defer item tagging to an external agent (phase 2) ([c63ced9](https://github.com/apollo4labs/wardrobe/commit/c63ced9caf4d4241fe53f7b164a886e45979547c))
+* **i18n:** restructure keys onto feature namespaces and ship 8 locales ([eaf47b3](https://github.com/apollo4labs/wardrobe/commit/eaf47b3dffb64fa430f2ead21ed1d2f7f7c3850e))
+* **items:** add tagging lifecycle fields and migration ([d49bb65](https://github.com/apollo4labs/wardrobe/commit/d49bb6506d37a77182e6c40479c3564cb5afc6b1))
+* **items:** defer tagging to an external agent and expose a write surface ([059e1ab](https://github.com/apollo4labs/wardrobe/commit/059e1ab509b93a5490ec4d12a92155dbdcc64776))
+* make internal AI optional and add capabilities endpoint ([#113](https://github.com/apollo4labs/wardrobe/issues/113)) ([376f9a6](https://github.com/apollo4labs/wardrobe/commit/376f9a6a1e846d3de7853f55ac76447f204c8529))
+* **outfits:** add bulk-delete endpoint ([0db1be2](https://github.com/apollo4labs/wardrobe/commit/0db1be23417cad87d28fa498bac9d5bf409c41ff))
+* **outfits:** add bulk-select/delete to outfits page, rename lookbook filter chip ([ea9f2c6](https://github.com/apollo4labs/wardrobe/commit/ea9f2c69decadb5f6e16f7e27ac1989bfbfe21e8))
+* support PUID/PGID overrides on app containers ([#123](https://github.com/apollo4labs/wardrobe/issues/123)) ([14674cb](https://github.com/apollo4labs/wardrobe/commit/14674cbbfd79e371b08d9761f02542aafe040cc3))
+* undo background removal and replace primary image ([#126](https://github.com/apollo4labs/wardrobe/issues/126)) ([c1c10b2](https://github.com/apollo4labs/wardrobe/commit/c1c10b2803b90104d5323ef112e66f786af75baa))
+
+
+### 🐛 Bug Fixes
+
+* [#124](https://github.com/apollo4labs/wardrobe/issues/124) fix prod compose file well ([3cded21](https://github.com/apollo4labs/wardrobe/commit/3cded21db36b877ef2a0a90815a620be2cc4bdf5))
+* 39: Add proper error messages for diagnose ([#40](https://github.com/apollo4labs/wardrobe/issues/40)) ([f4a71d1](https://github.com/apollo4labs/wardrobe/commit/f4a71d15eba68519f59ff571cca0a111d59cc0c7))
+* Add current user check ([84840ab](https://github.com/apollo4labs/wardrobe/commit/84840ab8da7727b24f127fa8d8ac18a57fbcbb51))
+* Add missing test:coverage script to package.json ([43b8dfa](https://github.com/apollo4labs/wardrobe/commit/43b8dfa6a254c4af67e95b1bb3fefee2eac9d0e4))
+* add missing URL fields to TypeScript interfaces ([6113dd6](https://github.com/apollo4labs/wardrobe/commit/6113dd6682227d82dc29251ed9a4fc9054047ad6))
+* add weather location fallbacks ([#75](https://github.com/apollo4labs/wardrobe/issues/75)) ([7426d6d](https://github.com/apollo4labs/wardrobe/commit/7426d6d8444769dd34263373ebf551ecaaf79b59))
+* address copilot review issues in i18n implementation ([a8871ee](https://github.com/apollo4labs/wardrobe/commit/a8871ee33f3d96ed940f75d067e8b852bced12eb))
+* align .env.example SECRET_KEY with dev-mode sentinel ([a8f9f5e](https://github.com/apollo4labs/wardrobe/commit/a8f9f5e5a8c66da81084e49b18fa8c47f82e11ef)), closes [#72](https://github.com/apollo4labs/wardrobe/issues/72)
+* allow overriding backend URL for renamed compose services ([#124](https://github.com/apollo4labs/wardrobe/issues/124)) ([2a813d6](https://github.com/apollo4labs/wardrobe/commit/2a813d60d711aa31c45ae7c024f1389b345be170))
+* chunk bulk uploads so batches over the limit no longer fail ([#125](https://github.com/apollo4labs/wardrobe/issues/125)) ([a4df578](https://github.com/apollo4labs/wardrobe/commit/a4df578b187b0343eff5091c49b7e02b76ec0546))
+* **ci:** Fix backend storage path and update Node.js to 20 ([55cda11](https://github.com/apollo4labs/wardrobe/commit/55cda11c76e03a490d3faa6981f50016bb1ebfde))
+* enable dev credential login in Docker production builds ([#43](https://github.com/apollo4labs/wardrobe/issues/43)) ([9aab711](https://github.com/apollo4labs/wardrobe/commit/9aab71185d82a1a789a104abdbb842511285e001))
+* Ensure opensource repo works for new users ([a003dbd](https://github.com/apollo4labs/wardrobe/commit/a003dbd1c65c8917148b00ac007b466fb6e3430a))
+* **frontend:** restore missing [@emnapi](https://github.com/emnapi) entries in package-lock.json ([58740db](https://github.com/apollo4labs/wardrobe/commit/58740db6f33b4ecbdd074a552205d3110625454b))
+* **frontend:** sync package-lock.json with package.json ([8ce97d0](https://github.com/apollo4labs/wardrobe/commit/8ce97d0d47e6f9803fbe3b83c75b7700899ecd6f))
+* **i18n:** translate defaultOccasion label in 6 locales ([6c92599](https://github.com/apollo4labs/wardrobe/commit/6c9259975146e9ec6be616b36583995d9f35c1cf))
+* Item pair score initialization for learning service ([9f7de07](https://github.com/apollo4labs/wardrobe/commit/9f7de07deb7216c55c2a091b481fc98be71d4ad2))
+* keep honoring NEXT_PUBLIC_API_URL when resolving the backend ([#124](https://github.com/apollo4labs/wardrobe/issues/124)) ([d8cca73](https://github.com/apollo4labs/wardrobe/commit/d8cca73dd5c20315e2d7d256b112663b84894c11))
+* make OIDC issuer URL trailing-slash agnostic ([#107](https://github.com/apollo4labs/wardrobe/issues/107)) ([152f175](https://github.com/apollo4labs/wardrobe/commit/152f17572488bb63bc5f65a0c1a3240752db12c1))
+* modernize Python type annotations for Ruff linting ([208920b](https://github.com/apollo4labs/wardrobe/commit/208920bb1f60318100584fc12a1732154570461b))
+* OIDC issue [#114](https://github.com/apollo4labs/wardrobe/issues/114) ([7354232](https://github.com/apollo4labs/wardrobe/commit/73542322e0d56913d5e3f249f4679c05efd0eb74))
+* **outfits:** relabel Reject to Dismiss ([c54fd57](https://github.com/apollo4labs/wardrobe/commit/c54fd57e6713a48cf5a6d944c61a96fafdd9bf25))
+* prevent same-slot item pairing, add socks/tie types, fix UI text… ([#55](https://github.com/apollo4labs/wardrobe/issues/55)) ([c457572](https://github.com/apollo4labs/wardrobe/commit/c4575720d706d30a432900693983b0a3b38fb1a8))
+* proxy /api/v1 through a route handler so BACKEND_URL applies ([#124](https://github.com/apollo4labs/wardrobe/issues/124)) ([2fff9c3](https://github.com/apollo4labs/wardrobe/commit/2fff9c399e0feae14266c36a1afb5ff46c437207))
+* re-fetch items after update/archive/restore to load relationships ([edfa65c](https://github.com/apollo4labs/wardrobe/commit/edfa65ce5d9516f61b6094554886f7aec0d452f2))
+* refetch outfit after commit ([f9b3ceb](https://github.com/apollo4labs/wardrobe/commit/f9b3ceba0eab745682168151cee3adc112641afc))
+* Resolve all CI quality check failures ([2209cdf](https://github.com/apollo4labs/wardrobe/commit/2209cdf66ff86090b95e583a6d587be429c2b357))
+* resolve CI lint/type/test failures from v1.2.0 release ([3568174](https://github.com/apollo4labs/wardrobe/commit/35681741610d8f696665b63ffc2ee15ad6c94fea))
+* Resolve lint and format issues ([86799df](https://github.com/apollo4labs/wardrobe/commit/86799df4e116e3ab3ee4fde4da64e9b945263dac))
+* retry AI tagging without logprobs when the provider rejects it ([2fbf38f](https://github.com/apollo4labs/wardrobe/commit/2fbf38fe2d0f3811edef385fabe4b168ee12e84e))
+* retry AI tagging without logprobs when the provider rejects it ([b39815d](https://github.com/apollo4labs/wardrobe/commit/b39815d52c666be445b6feb52d7f1f51abedefa3))
+* select wardrobe items beyond the first page in studio ([c73c571](https://github.com/apollo4labs/wardrobe/commit/c73c5717ff23fd849154f5e44569d854400bb600))
+* show config error on login when no auth provider is registered ([22e73ad](https://github.com/apollo4labs/wardrobe/commit/22e73ade5a9999fba2fb303a0533569d38294286))
+* surface real cause when outfit suggestion AI response is truncated ([#139](https://github.com/apollo4labs/wardrobe/issues/139)) ([#142](https://github.com/apollo4labs/wardrobe/issues/142)) ([7af8472](https://github.com/apollo4labs/wardrobe/commit/7af84720f1f6932d61fde8504edcf4b281f350fa))
+* Update AccumulatedItem types to match Item interface ([3e85320](https://github.com/apollo4labs/wardrobe/commit/3e853208a9b2abd99489415d77c923216825689a))
+* update cognitive cache thresh ([9170644](https://github.com/apollo4labs/wardrobe/commit/9170644a47140af7fb1e485c42af2688d9b95cde))
+* update pair context for feedback without a rating ([3764dec](https://github.com/apollo4labs/wardrobe/commit/3764dec0c6462aad253bed6ea3bf4a834b31e2b7))
+* use separate test database instead of falling back to production DB ([019d2e9](https://github.com/apollo4labs/wardrobe/commit/019d2e9b54a51c031b72281a2c4080d206a46b76))
+* use separate test database instead of falling back to production DB ([7eae5c9](https://github.com/apollo4labs/wardrobe/commit/7eae5c9882e218908ef94fe0a1d413138df1f381))
+
+
+### ♻️ Refactoring
+
+* **items:** align single-item create with the bulk skip_ai contract ([1195693](https://github.com/apollo4labs/wardrobe/commit/11956936c601bc0dea4c080d62e3c2bf186ed4b2))
+
+
+### 📝 Documentation
+
+* improve setup instructions and fix dev mode ([3b567de](https://github.com/apollo4labs/wardrobe/commit/3b567de06f49c5fbe04bfbc04c58ccbf3d743d69))
+* replace star history with supporters list ([0ba2f77](https://github.com/apollo4labs/wardrobe/commit/0ba2f77bb1dc72ac1ee04bc55354994cdd50a2ec))
+
+
+### 🔧 Maintenance
+
+* add cognitive cache ([886e65f](https://github.com/apollo4labs/wardrobe/commit/886e65f43d5fa89365bb10f122a3066ce7b81551))
+* add git-blame-ignore-revs for formatting commits ([38fcc6f](https://github.com/apollo4labs/wardrobe/commit/38fcc6f210089bfd0e2bb7979fbfc26487974ba5))
+* Add pre-commit hooks for lint/format enforcement ([90343d3](https://github.com/apollo4labs/wardrobe/commit/90343d39fbfd413bf6bbce273d7c7d5b205ba2cc))
+* Add tsbuildinfo to gitignore ([b5280aa](https://github.com/apollo4labs/wardrobe/commit/b5280aa158a3eb9228e712444ec62fef918b094e))
+* **deps:** bump astral-sh/setup-uv from 4 to 7 ([84ceb98](https://github.com/apollo4labs/wardrobe/commit/84ceb98defc5c87b7322d4d26469d9fd65238e3f))
+* **deps:** bump googleapis/release-please-action from 4 to 5 ([8a31d2c](https://github.com/apollo4labs/wardrobe/commit/8a31d2c379805284feb4e4d746d340262791b529))
+* fix linting errors and add missing type properties ([f1c4848](https://github.com/apollo4labs/wardrobe/commit/f1c484883d766961410977de1a81837679a8630f))
+* **main:** release wardrowbe 1.2.1 ([#16](https://github.com/apollo4labs/wardrobe/issues/16)) ([02406b6](https://github.com/apollo4labs/wardrobe/commit/02406b6c66303076df10034c49d8240a7fa675cb))
+* **main:** release wardrowbe 1.2.2 ([#44](https://github.com/apollo4labs/wardrobe/issues/44)) ([3f9db84](https://github.com/apollo4labs/wardrobe/commit/3f9db84670cc334e6179ac836fe2d067f7d88e1d))
+* **main:** release wardrowbe 1.2.3 ([#51](https://github.com/apollo4labs/wardrobe/issues/51)) ([6285682](https://github.com/apollo4labs/wardrobe/commit/6285682072c17c23c47e22fe08944bbafd50554f))
+* **main:** release wardrowbe 1.2.4 ([#53](https://github.com/apollo4labs/wardrobe/issues/53)) ([3aa9bb3](https://github.com/apollo4labs/wardrobe/commit/3aa9bb3d584d57ae184edc30ba0c479e7d773998))
+* **main:** release wardrowbe 1.3.0 ([618b7bd](https://github.com/apollo4labs/wardrobe/commit/618b7bd0eec4c482dd6431b37e51fca813468bdd))
+* **main:** release wardrowbe 1.3.1 ([#106](https://github.com/apollo4labs/wardrobe/issues/106)) ([a2fa5eb](https://github.com/apollo4labs/wardrobe/commit/a2fa5ebd2763e024f21e109574ced023cec2871f))
+* **main:** release wardrowbe 1.4.0 ([70461f7](https://github.com/apollo4labs/wardrobe/commit/70461f7397c9e3f65f87626cf75328c419357734))
+* **main:** release wardrowbe 1.5.0 ([3bac2a2](https://github.com/apollo4labs/wardrobe/commit/3bac2a268a1a1d6ff4fd09c0c5c03de09ff69b25))
+* **main:** release wardrowbe 1.5.1 ([be1711a](https://github.com/apollo4labs/wardrobe/commit/be1711aba0a571da01a5d59bf8fcef4c70b30cef))
+* **main:** release wardrowbe 1.6.0 ([65f0bc7](https://github.com/apollo4labs/wardrobe/commit/65f0bc7d9320b43e03b0add29fc4237df96932e8))
+* **main:** release wardrowbe 1.7.0 ([#150](https://github.com/apollo4labs/wardrobe/issues/150)) ([eda843f](https://github.com/apollo4labs/wardrobe/commit/eda843fd7de2a99c95774d19431def988eb58325))
+* **release:** Add example screens ([2add224](https://github.com/apollo4labs/wardrobe/commit/2add2242a1342de29777fcb4ae74068bb6c8aab1))
+
+
+### 🧪 Tests
+
+* **items:** cover the tagging lifecycle ([c2e9bcc](https://github.com/apollo4labs/wardrobe/commit/c2e9bcc3ffe69d5ea55e109b1b86cf4bc07b2cbf))
+
+
+### 👷 CI/CD
+
+* gate translation coverage ([6a87d29](https://github.com/apollo4labs/wardrobe/commit/6a87d298b9b489f62eb0373cfc939f99362615e2))
+* install cognitive-cache via uv tool install ([6ede4f2](https://github.com/apollo4labs/wardrobe/commit/6ede4f237567de29c250936f4bc05ff6b896f99e))
+* publish Docker images to GHCR on main and releases ([#83](https://github.com/apollo4labs/wardrobe/issues/83)) ([af22e84](https://github.com/apollo4labs/wardrobe/commit/af22e8410d37f04800dafa4cbc09a94e7fddd6bc))
+* publish versioned images on release ([#112](https://github.com/apollo4labs/wardrobe/issues/112)) ([9677b39](https://github.com/apollo4labs/wardrobe/commit/9677b3918728355046d3d8f306b11b9a0d61bc6e))
+
+
+### 💄 Styling
+
+* Update README badges to for-the-badge style ([#10](https://github.com/apollo4labs/wardrobe/issues/10)) ([6eff9e9](https://github.com/apollo4labs/wardrobe/commit/6eff9e9278a424ff49e1a9b1d93b5611eb05e123))
+
+
+### 📦 Build
+
+* **deps:** bump codecov/codecov-action from 4 to 6 ([436997e](https://github.com/apollo4labs/wardrobe/commit/436997e8a4ff461a6336c442f6872da441dce1f7))
+
 ## [1.7.0](https://github.com/Anyesh/wardrowbe/compare/wardrowbe-v1.6.0...wardrowbe-v1.7.0) (2026-07-30)
 
 
